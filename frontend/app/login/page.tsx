@@ -27,6 +27,14 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const ADMIN_EMAIL = "karan@admin.com";
+  const ADMIN_PASSWORD = "password123";
+
+  const fillAdminCredentials = () => {
+    setEmail(ADMIN_EMAIL);
+    setPassword(ADMIN_PASSWORD);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -45,14 +53,16 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-pink-50 to-purple-50 p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-linear-to-br from-pink-50 to-purple-50 p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="mx-auto mb-4 w-16 h-16 bg-primary rounded-full flex items-center justify-center">
             <span className="text-3xl">🍬</span>
           </div>
           <CardTitle className="text-3xl font-serif">Welcome Back</CardTitle>
-          <CardDescription className="text-gray-800">Sign in to your Sweet Shop account</CardDescription>
+          <CardDescription className="text-gray-800">
+            Sign in to your Sweet Shop account
+          </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
@@ -107,6 +117,33 @@ export default function LoginPage() {
             </p>
           </CardFooter>
         </form>
+        <Card className="border p-5 w-fit mx-auto">
+          <CardHeader>
+            <CardTitle className="text-sm -mb-5">
+              Admin Test Credentials
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent className="text-sm">
+            <p>
+              <span className="font-medium">Email:</span> {ADMIN_EMAIL}
+            </p>
+            <p>
+              <span className="font-medium">Password:</span> {ADMIN_PASSWORD}
+            </p>
+          </CardContent>
+
+          <CardFooter>
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full cursor-pointer border-black"
+              onClick={fillAdminCredentials}
+            >
+              Click to fill Admin Credentials
+            </Button>
+          </CardFooter>
+        </Card>
       </Card>
     </div>
   );
